@@ -1,5 +1,6 @@
 # Binary-Search-Tree
 Python Implementation for Binary Search Tree.
+
 Binary Search Tree is a Tree like data structure which consists of collection of objects linked to each other. All the values to the left of an object are less than the current value of the object and values right to it are greater. Its expression is similar to heaps(which is an array), but is completely different. A heap is a complete binary Tree where values in the lower level are filled from left to right without any none values between them which is not the case with BST where values are filled w.r.t their importance.
 
 Total impementation consists of a class 'Tree' with 11 methods inside it.
