@@ -1,26 +1,78 @@
-# Binary-Search-Tree
-Python Implementation for Binary Search Tree.
+# Binary Search Tree (BST) - Python Implementation
 
-Binary Search Tree is a Tree like data structure which consists of collection of objects linked to each other. All the values to the left of an object are less than the current value of the object and values right to it are greater. Its expression is similar to heaps(which is an array), but is completely different. A heap is a complete binary Tree where values in the lower level are filled from left to right without any none values between them which is not the case with BST where values are filled w.r.t their importance.
+This repository contains a Python implementation of a **Binary Search Tree (BST)**.
 
-Total impementation consists of a class 'Tree' with 11 methods inside it.
-_init_ method is used to create an object of the tree which have properties like 'value', 'left' & 'right'
-where left and right separately point to two different objects of Tree which are considered to be child of the orginal object(which is considerd as parent).
+## Overview
 
-'isempty' is the method which checks whether the value of an object is None or not.
-'isleaf' is the method which checks whether an object is leaf or or not.
-An object is considered to be leaf, if its both left and right pointers points to empty objects
+A **Binary Search Tree** is a hierarchical data structure where each node follows the rule:
+- Values **smaller** than the current node are placed in the **left subtree**.
+- Values **greater** than the current node are placed in the **right subtree**.
 
-'makeempty' is used to remove the value of the object(it has to be leaf) and make it None. This method is generally used when we are deleting a value from the Tree.
-'copyright' is used when a deleting value is not of an object which is leaf. The value of the object is removed and value of its rightchild(provided the left child is empty) is copied to it and consequently its grandchildren(children of its right child) are promoted as its own children.
+While BSTs share some similarities with **heaps** (which are array-based), they are fundamentally different. 
+- A **heap** is a complete binary tree where nodes are filled **left to right** without gaps.
+- A **BST** organizes nodes based on value comparisons.
 
-'find' is a method which search for a value in the entire tree and returns boolean value depending upon the situation. if value is in the Tree, it returns True or it will return false. 
-'insert' is mehtod which inserts a value into the already existing tree.
-'maxval' and 'minval' are methods which are used to find the max value and min values in a given tree.
+## Implementation Details
 
-'delete' is used to delete a value from the Tree which uses the methods like 'makeempty' and 'copyright' to achieve it.
-'inorder' is a method which return a sorted list of all the values in the Tree in Ascending order.
+The BST implementation consists of a `Tree` class with **11 methods**.
 
-In general the operations like insert, delete, finding max value or min value etc., in BST have a time complexity of O(logn) which is far better when compared to the heaps. In heaps the insertion is Linear-O(n), deletion and sorting takes O(nlogn). But the Time complexity of BST, O(logn) can be possible only if the Tree is balanced(if the left and right subtrees of the root differ by maximum 1). 
-There is a possibility that tree is not balanced and is skewed to either right or left(means all the values are either to left of the root or to the right).
-To modify this one can Improve the existing BST algorithm and the modified version is generally reffered to as AVL Tree(self Balancing Tree).
+### 1. **`__init__`** (Constructor)
+Creates a tree node with attributes:
+- `value` – Stores the node's value.
+- `left` – Points to the left subtree.
+- `right` – Points to the right subtree.
+
+### 2. **`isempty`**
+Checks whether the current node is empty (i.e., its value is `None`).
+
+### 3. **`isleaf`**
+Determines if the current node is a **leaf** (i.e., both `left` and `right` are empty).
+
+### 4. **`makeempty`**
+Removes a **leaf node** by setting its value to `None`.  
+Used in the deletion process.
+
+### 5. **`copyright`**
+Handles node deletion when the node has children.  
+- If a node to be deleted **has only a right child**, its value is replaced with the right child’s value.  
+- The right child’s children are promoted accordingly.
+
+### 6. **`find`**
+Searches for a given value in the BST and returns:
+- `True` – If the value exists.
+- `False` – If the value is not found.
+
+### 7. **`insert`**
+Inserts a new value into the BST while maintaining its ordering.
+
+### 8. **`maxval`**
+Finds the **maximum** value in the BST.
+
+### 9. **`minval`**
+Finds the **minimum** value in the BST.
+
+### 10. **`delete`**
+Deletes a value from the BST, using:
+- `makeempty` (for leaf nodes).
+- `copyright` (for nodes with children).
+
+### 11. **`inorder`**
+Performs an **in-order traversal**, returning a sorted list of values in **ascending order**.
+
+## Time Complexity
+
+| Operation   | Average Case | Worst Case (Unbalanced) |
+|------------|-------------|------------------------|
+| **Search**  | O(log n)    | O(n)                   |
+| **Insert**  | O(log n)    | O(n)                   |
+| **Delete**  | O(log n)    | O(n)                   |
+
+### Why is balancing important?
+For optimal performance, BST operations should run in **O(log n)**. However, if the tree becomes **skewed** (all nodes leaning left or right), operations degrade to **O(n)**.
+
+To prevent skewness, **AVL Trees (self-balancing BSTs)** can be used to maintain balance automatically.
+
+---
+
+### 🚀 Contributions & Enhancements  
+Feel free to contribute improvements, such as adding **AVL tree balancing** or **additional traversal methods**!
